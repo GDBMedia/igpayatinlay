@@ -1,24 +1,30 @@
 function piglatin (word, array){
-	for (var i = 0; i < array.length; i++){
-		if(word.charAt(0) === array[i]){
-			word += "ay";
-			alert(word);
-			break;
-		} else if (word.charAt(0) === "q") {
-      var q = (word.charAt(0) + word.charAt(1));
+		if (word.charAt(0) === "q") {
+      var qU = (word.charAt(0) + word.charAt(1));
 			word = word.slice(2);
-			word += q;
+			word += qU;
 			word += "ay";
 			alert(word);
-			break;
 	  } else{
-			var first = word.charAt(0);
-			word = word.slice(1);
-			word += first;
+	  	var vowelFound = false;
+	  	var count = 0;
+	  	for (var i = 0; i < word.length; i++){
+	  		for (var x = 0; x < array.length; x++){
+	  			if(word.charAt(i) === array[x]){
+	  				vowelFound = true;
+	  				break;
+	  			}
+	  		}
+	  		if(vowelFound){
+	  			break;
+	  		}
+	  			count++;
+			}
+			word2 = word;
+			word = word.slice(count);
+			word = word + word2.substring(0,count);
 			word += "ay";
 			alert(word);
-			break;
-		}
 	}
 }
 
@@ -44,4 +50,4 @@ $(function(event){
 // 2. is first letter a vowel. output: add ay to end
 // 2. if word starts with qu output: move qu to end and add ay to end
 // 3. if first letter a consonant. output remove consecutive consonants move to end and add ay to end
-// 4. if starts with y output same as consonant
+
