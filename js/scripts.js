@@ -4,7 +4,14 @@ function piglatin (word, array){
 			word += "ay";
 			alert(word);
 			break;
-		}else{
+		} else if (word.charAt(0) === "q") {
+      var q = (word.charAt(0) + word.charAt(1));
+			word = word.slice(2);
+			word += q;
+			word += "ay";
+			alert(word);
+			break;
+	  } else{
 			var first = word.charAt(0);
 			word = word.slice(1);
 			word += first;
