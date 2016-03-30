@@ -1,8 +1,16 @@
-function piglatin (word, arrayOfVowels){
-	for (var i = 0; i < arrayOfVowels.length; i++){
-		if(word.charAt(0) === arrayOfVowels[i]){
-			alert("yippie");
-
+function piglatin (word, array){
+	for (var i = 0; i < array.length; i++){
+		if(word.charAt(0) === array[i]){
+			word += "ay";
+			alert(word);
+			break;
+		}else{
+			var first = word.charAt(0);
+			word = word.slice(1);
+			word += first;
+			word += "ay";
+			alert(word);
+			break;
 		}
 	}
 }
