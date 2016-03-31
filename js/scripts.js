@@ -1,16 +1,28 @@
-function piglatin (word, array){
-		if (word.charAt(0) === "q") {
-      var qU = (word.charAt(0) + word.charAt(1));
-			word = word.slice(2);
-			word += qU;
-			word += "ay";
-			alert(word);
-	  } else{
+function piglatin (array1, array2){
+	var result = "Pig Latin: "
+	for(var z = 0; z < array1.length; z++){
+		var word = array1[z];
+	
+
+		var quFound = false;
+		var uCount = 0;
+		for (var a = 0; a < word.length; a++){
+				if((word.charAt(a) === "u") && (word.charAt(a-1) === "q")){
+					uCount = a;
+					quFound = true;
+					break;
+				}
+			}
+		if(!quFound){
+
 	  	var vowelFound = false;
+	  	
 	  	var count = 0;
 	  	for (var i = 0; i < word.length; i++){
-	  		for (var x = 0; x < array.length; x++){
-	  			if(word.charAt(i) === array[x]){
+	  		for (var x = 0; x < array2.length; x++){
+  				
+	  			if(word.charAt(i) === array2[x]){
+
 	  				vowelFound = true;
 	  				break;
 	  			}
@@ -24,19 +36,35 @@ function piglatin (word, array){
 			word = word.slice(count);
 			word = word + word2.substring(0,count);
 			word += "ay";
-			alert(word);
-	}
+		}else{
+			word2 = word;
+			var word3 = word.substr(0, (uCount-1));
+			var word4 = word.substr((uCount+1), word.length);
+			word = word3+word4;
+			word = word + word2.substring((uCount-1), (uCount+1));
+			word += "ay";
+			
+		}
+	result += " " + word;
 }
+return result;
+}
+
+
+
 
 $(function(event){
 	$("#submit").click(function(event){
 		event.preventDefault();
 		var sentence = $("#sentence").val();
-		var sentanceArray = sentence.split(" ");
+		var sentenceArray = sentence.split(" ");
 		var arrayOfVowels = ["a", "e", "i", "o", "u"];
 
-		piglatin(sentence, arrayOfVowels);
+		var result = piglatin(sentenceArray, arrayOfVowels);
+		
 
+		$("#result").show();
+		$("#resultT").text(result);
 
 	});
 });
@@ -44,10 +72,4 @@ $(function(event){
 
 
 
-
-// bdd:
-// 1. if not a word output false
-// 2. is first letter a vowel. output: add ay to end
-// 2. if word starts with qu output: move qu to end and add ay to end
-// 3. if first letter a consonant. output remove consecutive consonants move to end and add ay to end
 
