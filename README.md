@@ -1,6 +1,6 @@
 # _Igpay Atinlay_
 
-#### _A page for a Island Resort, 3/30_
+#### _A page for a converting to pig latin, 3/30_
 
 
 #### By _**Garrett Biernat**_
